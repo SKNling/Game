@@ -1,14 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8kl3k3lb340k"]
+[gd_scene load_steps=8 format=3 uid="uid://c8kl3k3lb340k"]
 
 [ext_resource type="Texture2D" uid="uid://byc7pqbpf67yy" path="res://Game/Scenes/forest/forest.png" id="1_ge41m"]
+[ext_resource type="Script" uid="uid://cc2kep7g1uv6b" path="res://Game/Scenes/forest/forest.gd" id="1_jqxvm"]
+[ext_resource type="Texture2D" uid="uid://c4xma8k7af34j" path="res://Game/Scenes/forest/forest treee.png" id="2_52jna"]
+[ext_resource type="Texture2D" uid="uid://c8i7x18cbh1g2" path="res://Game/Scenes/forest/door to go in castle.png" id="2_bjdpj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvhkm"]
 size = Vector2(640.5, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjdpj"]
-size = Vector2(7, 318.625)
+size = Vector2(7, 364.625)
 
-[node name="Forest" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqxvm"]
+size = Vector2(47, 39)
+
+[node name="Forest" type="CanvasLayer"]
+script = ExtResource("1_jqxvm")
+
+[node name="ForestTreee" type="Sprite2D" parent="."]
+texture = ExtResource("2_52jna")
+centered = false
 
 [node name="Forest" type="Sprite2D" parent="."]
 texture = ExtResource("1_ge41m")
@@ -22,9 +33,21 @@ position = Vector2(319.75, 335.5)
 shape = SubResource("RectangleShape2D_pvhkm")
 
 [node name="wall" type="CollisionShape2D" parent="CollisionArea"]
-position = Vector2(-4, 160.375)
+position = Vector2(-4, 167.6875)
 shape = SubResource("RectangleShape2D_bjdpj")
 
 [node name="wall2" type="CollisionShape2D" parent="CollisionArea"]
-position = Vector2(643.5, 159.3125)
+position = Vector2(643.5, 175)
 shape = SubResource("RectangleShape2D_bjdpj")
+
+[node name="DoorToGoInCastle" type="Sprite2D" parent="."]
+position = Vector2(601, 299)
+texture = ExtResource("2_bjdpj")
+
+[node name="Area2D" type="Area2D" parent="DoorToGoInCastle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToGoInCastle/Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_jqxvm")
+
+[connection signal="body_entered" from="DoorToGoInCastle/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bobirkwopqxxy"]
+
+[ext_resource type="Texture2D" uid="uid://c4xma8k7af34j" path="res://Game/Scenes/forest/forest treee.png" id="1_er27n"]
+[ext_resource type="Texture2D" uid="uid://byc7pqbpf67yy" path="res://Game/Scenes/forest/forest.png" id="2_0fr52"]
+[ext_resource type="Texture2D" uid="uid://c8i7x18cbh1g2" path="res://Game/Scenes/forest/door to go in castle.png" id="3_di73t"]
+[ext_resource type="Texture2D" uid="uid://x5i87iy2t0ph" path="res://Game/Character/Mob/dragon/dragon.png" id="4_q1q7m"]
+[ext_resource type="Texture2D" uid="uid://dennsg3o313d1" path="res://Game/Character/princess/princess.png" id="5_c86ge"]
+[ext_resource type="Texture2D" uid="uid://2c570v5akiim" path="res://Game/Character/hero/modle og knight.png" id="6_glkkv"]
+
+[sub_resource type="Animation" id="Animation_fem27"]
+resource_name = "dragon get princess"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(-112, 100.99999), Vector2(114, 298), Vector2(330, 96)]
+}
+
+[sub_resource type="Animation" id="Animation_fp407"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-112, 100.99999)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvfvw"]
+_data = {
+&"RESET": SubResource("Animation_fp407"),
+&"dragon get princess": SubResource("Animation_fem27")
+}
+
+[node name="CutScene" type="CanvasLayer"]
+
+[node name="ForestTreee" type="Sprite2D" parent="."]
+texture = ExtResource("1_er27n")
+centered = false
+
+[node name="Forest" type="Sprite2D" parent="."]
+texture = ExtResource("2_0fr52")
+centered = false
+
+[node name="DoorToGoInCastle" type="Sprite2D" parent="."]
+position = Vector2(601, 299)
+texture = ExtResource("3_di73t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("Dragon")
+libraries = {
+&"": SubResource("AnimationLibrary_qvfvw")
+}
+
+[node name="Dragon" type="Sprite2D" parent="AnimationPlayer"]
+position = Vector2(-112, 100.99999)
+texture = ExtResource("4_q1q7m")
+
+[node name="Princess" type="Sprite2D" parent="AnimationPlayer"]
+position = Vector2(120, 305)
+texture = ExtResource("5_c86ge")
+
+[node name="ModleOgKnight" type="Sprite2D" parent="AnimationPlayer"]
+position = Vector2(55, 302)
+texture = ExtResource("6_glkkv")

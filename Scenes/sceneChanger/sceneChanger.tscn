@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://baug12bxuiq6w"]
+[gd_scene load_steps=3 format=3 uid="uid://baug12bxuiq6w"]
 
 [ext_resource type="Script" uid="uid://ds71lblosdv0g" path="res://Game/Scenes/sceneChanger/sceneChanger.gd" id="1_o8hws"]
-[ext_resource type="PackedScene" uid="uid://c8kl3k3lb340k" path="res://Game/Scenes/forest/forest.tscn" id="2_75c38"]
-[ext_resource type="PackedScene" uid="uid://tf7hmr1keu85" path="res://Game/Character/hero/hero.tscn" id="3_lwe8i"]
+[ext_resource type="PackedScene" uid="uid://buwwif34u8ifu" path="res://Game/Scenes/loadingScreen/loadingScreen.tscn" id="4_6fyaw"]
 
 [node name="SceneChanger" type="Node"]
 script = ExtResource("1_o8hws")
 
-[node name="Forest" parent="." instance=ExtResource("2_75c38")]
-
-[node name="Hero" parent="." instance=ExtResource("3_lwe8i")]
-position = Vector2(168, 297)
+[node name="LoadingScreen" parent="." instance=ExtResource("4_6fyaw")]

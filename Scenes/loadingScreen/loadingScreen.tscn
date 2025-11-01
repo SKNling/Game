@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://buwwif34u8ifu"]
+
+[ext_resource type="Script" uid="uid://bv5vo4bftwc76" path="res://Game/Scenes/loadingScreen/loadingScreen.gd" id="1_fa7un"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_fa7un")
+
+[node name="play_button" type="Button" parent="."]
+offset_left = 239.0
+offset_top = 160.0
+offset_right = 374.0
+offset_bottom = 203.0
+text = "Play"
+
+[node name="gameTitle" type="Label" parent="."]
+offset_left = 121.0
+offset_top = 93.0
+offset_right = 493.0
+offset_bottom = 116.0
+text = " Super Ultra Ultimate Scary Spooky Tower Game"
+
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]

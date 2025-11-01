@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://8gvuvv8gl76o"]
+[gd_scene load_steps=3 format=3 uid="uid://8gvuvv8gl76o"]
 
-[node name="Princess" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://dennsg3o313d1" path="res://Game/Character/princess/princess.png" id="1_ny5hk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hf6tw"]
+size = Vector2(20, 2)
+
+[node name="Princess" type="RigidBody2D"]
+collision_layer = 0
+constant_force = Vector2(1000, 0)
+constant_torque = 1000.0
+
+[node name="Princess" type="Sprite2D" parent="."]
+texture = ExtResource("1_ny5hk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_hf6tw")
