@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://tf7hmr1keu85"]
+
+[ext_resource type="Texture2D" uid="uid://2c570v5akiim" path="res://Game/Character/hero/modle og knight.png" id="1_lvrdp"]
+
+[node name="Hero" type="Node2D"]
+
+[node name="ModleOgKnight" type="Sprite2D" parent="."]
+texture = ExtResource("1_lvrdp")
