@@ -7,6 +7,7 @@ signal scene_changed(scene_name)
 #@onready var button_click_sound_1 = $button_click_1
 #@onready var เหรียญ_label = $"เหรียญ_label"
 #@onready var loading_screen_music = $loading_screen_music
+@onready var howToPlayWindow = $howToPlayWindow
 
 
 
@@ -18,6 +19,14 @@ func _on_play_button_pressed():
 		#print("play button disabled = true!")
 		#print("signal 'scene_changed' emitting!, value -> 'scene_name' = 'loading screen'")
 		emit_signal('scene_changed', scene_name)
+
+#region Section - How to Play
+func _on_how_to_play_button_pressed():
+	howToPlayWindow.visible = true
+func _on_how_to_play_window_close_requested():
+	howToPlayWindow.visible = false
+#endregion
+
 	
 func clean_up():
 	#if button_click_sound_1.playing:

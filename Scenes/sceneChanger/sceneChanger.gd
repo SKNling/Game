@@ -2,7 +2,6 @@ extends Node
 
 var next_scene = null
 var next_scene_name: String
-@onready var anim = $AnimationPlayer
 @onready var current_scene = $LoadingScreen
 
 
@@ -19,7 +18,7 @@ func handle_scene_changed(current_scene_name: String):
 	#print("signal 'scene_changed' recieved! changing value 'scene_name' -> 'current_scene_name' = ", current_scene_name)
 	match current_scene_name:
 		'loadingScreen':
-			next_scene_name = 'forest'
+			next_scene_name = 'princessKidnapCutScene'
 		_:
 			print('error no matching scene name :(')
 			return

@@ -1,22 +1,112 @@
-[gd_scene load_steps=2 format=3 uid="uid://buwwif34u8ifu"]
+[gd_scene load_steps=7 format=3 uid="uid://buwwif34u8ifu"]
 
 [ext_resource type="Script" uid="uid://bv5vo4bftwc76" path="res://Game/Scenes/loadingScreen/loadingScreen.gd" id="1_fa7un"]
+[ext_resource type="Texture2D" uid="uid://dneqc2fm38d8q" path="res://Game/Scenes/loadingScreen/background of star.png" id="2_fi71d"]
+[ext_resource type="Texture2D" uid="uid://d3vdiy61f0pq3" path="res://Game/Scenes/loadingScreen/bloodd.png" id="3_2c81a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c81a"]
+atlas = ExtResource("2_fi71d")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldeyd"]
+atlas = ExtResource("2_fi71d")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_buqsv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c81a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldeyd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="LoadingScreen" type="CanvasLayer"]
 script = ExtResource("1_fa7un")
 
-[node name="play_button" type="Button" parent="."]
-offset_left = 239.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_buqsv")
+autoplay = "default"
+centered = false
+
+[node name="play_button" type="TextureButton" parent="."]
+offset_left = 165.0
 offset_top = 160.0
-offset_right = 374.0
-offset_bottom = 203.0
-text = "Play"
+offset_right = 461.0
+offset_bottom = 225.0
+texture_hover = ExtResource("3_2c81a")
+
+[node name="Label" type="Label" parent="play_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -28.5
+offset_right = -27.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5757918, 1.2119602)
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="howToPlayButton" type="TextureButton" parent="."]
+offset_left = 165.0
+offset_top = 227.0
+offset_right = 461.0
+offset_bottom = 292.0
+texture_hover = ExtResource("3_2c81a")
+
+[node name="Label" type="Label" parent="howToPlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -12.5
+offset_right = 88.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1169374, 0.5255408)
+theme_override_font_sizes/font_size = 32
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="gameTitle" type="Label" parent="."]
-offset_left = 121.0
+offset_left = 71.0
 offset_top = 93.0
-offset_right = 493.0
+offset_right = 443.0
 offset_bottom = 116.0
+scale = Vector2(1.3648351, 1.1481482)
 text = " Super Ultra Ultimate Scary Spooky Tower Game"
 
+[node name="howToPlayWindow" type="Window" parent="."]
+oversampling_override = 1.0
+position = Vector2i(220, 130)
+size = Vector2i(200, 100)
+visible = false
+
+[node name="Label" type="Label" parent="howToPlayWindow"]
+offset_left = 28.0
+offset_top = 37.0
+offset_right = 172.0
+offset_bottom = 60.0
+text = "Click \"Play\" button"
+
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="howToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="close_requested" from="howToPlayWindow" to="." method="_on_how_to_play_window_close_requested"]
