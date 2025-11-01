@@ -1,9 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8kl3k3lb340k"]
+[gd_scene load_steps=4 format=3 uid="uid://c8kl3k3lb340k"]
 
 [ext_resource type="Texture2D" uid="uid://byc7pqbpf67yy" path="res://Game/Scenes/forest/forest.png" id="1_ge41m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvhkm"]
+size = Vector2(640.5, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjdpj"]
+size = Vector2(7, 318.625)
 
 [node name="Forest" type="Node2D"]
 
 [node name="Forest" type="Sprite2D" parent="."]
 texture = ExtResource("1_ge41m")
 centered = false
+
+[node name="CollisionArea" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="floor" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(319.75, 335.5)
+shape = SubResource("RectangleShape2D_pvhkm")
+
+[node name="wall" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(-4, 160.375)
+shape = SubResource("RectangleShape2D_bjdpj")
+
+[node name="wall2" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(643.5, 159.3125)
+shape = SubResource("RectangleShape2D_bjdpj")

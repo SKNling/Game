@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://tf7hmr1keu85"]
+[gd_scene load_steps=4 format=3 uid="uid://tf7hmr1keu85"]
 
 [ext_resource type="Texture2D" uid="uid://2c570v5akiim" path="res://Game/Character/hero/modle og knight.png" id="1_lvrdp"]
+[ext_resource type="Script" uid="uid://24utlwak13vt" path="res://Game/Character/hero/hero.gd" id="1_y7j7r"]
 
-[node name="Hero" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rritn"]
+radius = 7.0
+
+[node name="Hero" type="CharacterBody2D"]
+collision_layer = 128
+script = ExtResource("1_y7j7r")
 
 [node name="ModleOgKnight" type="Sprite2D" parent="."]
 texture = ExtResource("1_lvrdp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rritn")
