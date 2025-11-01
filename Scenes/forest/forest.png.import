@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byc7pqbpf67yy"
-path="res://.godot/imported/forest.png-83f8fce865f55e228d259b16f9ce5e2a.ctex"
+path="res://.godot/imported/forest.png-0b1095fb02a91a58faad0a06f3a53797.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Location/forest/forest.png"
-dest_files=["res://.godot/imported/forest.png-83f8fce865f55e228d259b16f9ce5e2a.ctex"]
+source_file="res://Game/Scenes/forest/forest.png"
+dest_files=["res://.godot/imported/forest.png-0b1095fb02a91a58faad0a06f3a53797.ctex"]
 
 [params]
 
