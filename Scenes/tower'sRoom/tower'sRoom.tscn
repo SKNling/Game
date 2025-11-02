@@ -1,3 +1,114 @@
-[gd_scene format=3 uid="uid://cd3b6cbmb6mff"]
+[gd_scene load_steps=17 format=3 uid="uid://cd3b6cbmb6mff"]
+
+[ext_resource type="Texture2D" uid="uid://bhyxajkcxn5o" path="res://Game/Scenes/tower'sRoom/inside tower.png" id="1_x3u5g"]
+[ext_resource type="Texture2D" uid="uid://dfcqtwnde7i7x" path="res://Game/Scenes/tower'sRoom/chain furniture.png" id="2_tigth"]
+[ext_resource type="Texture2D" uid="uid://74qmi466p881" path="res://Game/Character/Mob/dummy/dummy.png" id="3_oxwfd"]
+[ext_resource type="Texture2D" uid="uid://bx2ya5p1heq6i" path="res://Game/Scenes/tower'sRoom/box.png" id="4_qt6lh"]
+[ext_resource type="Texture2D" uid="uid://bsefm3pmhuw6o" path="res://Game/Scenes/tower'sRoom/door inside tower.png" id="5_w26mp"]
+[ext_resource type="Texture2D" uid="uid://chya8n6ygwam3" path="res://Game/Scenes/tower'sRoom/light side.png" id="6_1vj4x"]
+[ext_resource type="Texture2D" uid="uid://e7xjf1vy3dni" path="res://Game/Scenes/tower'sRoom/light middle.png" id="7_fvl18"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3u5g"]
+atlas = ExtResource("5_w26mp")
+region = Rect2(0, 0, 42, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tigth"]
+atlas = ExtResource("5_w26mp")
+region = Rect2(43, 0, 42, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rr77o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3u5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tigth")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pneql"]
+atlas = ExtResource("6_1vj4x")
+region = Rect2(3, 4, 23, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3k1w"]
+atlas = ExtResource("6_1vj4x")
+region = Rect2(29, 4, 23, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pgfr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pneql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3k1w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjdi7"]
+atlas = ExtResource("7_fvl18")
+region = Rect2(5, 5, 22, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpxm3"]
+atlas = ExtResource("7_fvl18")
+region = Rect2(37, 5, 22, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q6y6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjdi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpxm3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Tower\'sRoom" type="Node"]
+
+[node name="insideTower" type="Sprite2D" parent="."]
+texture = ExtResource("1_x3u5g")
+centered = false
+
+[node name="chainFurniture" type="Sprite2D" parent="."]
+position = Vector2(346, 118)
+texture = ExtResource("2_tigth")
+
+[node name="dummy" type="Sprite2D" parent="."]
+position = Vector2(397, 273)
+texture = ExtResource("3_oxwfd")
+
+[node name="boxes" type="Sprite2D" parent="."]
+position = Vector2(175, 263)
+texture = ExtResource("4_qt6lh")
+
+[node name="door" type="AnimatedSprite2D" parent="."]
+position = Vector2(549, 294)
+sprite_frames = SubResource("SpriteFrames_rr77o")
+autoplay = "default"
+
+[node name="lightSide" type="AnimatedSprite2D" parent="."]
+position = Vector2(597, 255)
+sprite_frames = SubResource("SpriteFrames_7pgfr")
+autoplay = "default"
+
+[node name="lightSide2" type="AnimatedSprite2D" parent="."]
+position = Vector2(44, 240)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_7pgfr")
+autoplay = "default"
+
+[node name="lightMiddle" type="AnimatedSprite2D" parent="."]
+position = Vector2(307, 215)
+sprite_frames = SubResource("SpriteFrames_q6y6x")
+autoplay = "default"

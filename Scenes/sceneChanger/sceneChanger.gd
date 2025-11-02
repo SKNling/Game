@@ -7,7 +7,7 @@ extends Node
 
 		 #VARIABLE#
 @onready var sceneName : String = $".".name
-@export var primaryScene : CanvasLayer
+@export var primaryScene : Node2D
 var secondaryScene = null
 var secondarySceneName: String
 var game_data = Global.game_data
@@ -28,7 +28,7 @@ func sceneChangedProcess(primarySceneName: String):
 			return
 			
 	secondaryScene = load('res://Game/Scenes/' + secondarySceneName + '/' + secondarySceneName + '.tscn').instantiate()
-	secondaryScene.layer = -1
+	#secondaryScene.layer = -1
 	secondaryScene.connect('sceneChanged', Callable(self, 'sceneChangedProcess'))
 	
 	primaryScene.clean_up()
@@ -36,7 +36,8 @@ func sceneChangedProcess(primarySceneName: String):
 	add_child(secondaryScene)
 	
 	primaryScene = secondaryScene
-	primaryScene.layer = 1
+	#primaryScene.layer = 1
+	
 	
 	secondaryScene = null
 	#transfering_data_between_scenes(primaryScene, secondaryScene)

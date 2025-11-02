@@ -1,25 +1,133 @@
-[gd_scene load_steps=16 format=3 uid="uid://bobirkwopqxxy"]
+[gd_scene load_steps=29 format=3 uid="uid://bobirkwopqxxy"]
 
 [ext_resource type="Texture2D" uid="uid://c4xma8k7af34j" path="res://Game/Scenes/forest/forest treee.png" id="1_er27n"]
 [ext_resource type="Script" uid="uid://buec8a7rs3xd5" path="res://Game/Scenes/princessKidnapCutScene/princessKidnapCutScene.gd" id="1_yoc7i"]
 [ext_resource type="Texture2D" uid="uid://byc7pqbpf67yy" path="res://Game/Scenes/forest/forest.png" id="2_0fr52"]
 [ext_resource type="Texture2D" uid="uid://c8i7x18cbh1g2" path="res://Game/Scenes/forest/door to go in castle.png" id="3_di73t"]
+[ext_resource type="AudioStream" uid="uid://be7c82qetjy1a" path="res://Game/Character/Mob/dragon/dragonRoar.mp3" id="4_g1tcr"]
 [ext_resource type="AudioStream" uid="uid://4pptw63c10sy" path="res://Game/Character/hero/jumpSound.mp3" id="4_mbo13"]
 [ext_resource type="Texture2D" uid="uid://x5i87iy2t0ph" path="res://Game/Character/Mob/dragon/dragon.png" id="4_q1q7m"]
 [ext_resource type="AudioStream" uid="uid://bc8h6wwrfibmp" path="res://Game/Character/Mob/dragon/dragonGrowl.mp3" id="4_vgf8u"]
+[ext_resource type="AudioStream" uid="uid://ywka1cg8drfm" path="res://Game/Scenes/princessKidnapCutScene/swoosh5.mp3" id="5_5ntlu"]
 [ext_resource type="Texture2D" uid="uid://dennsg3o313d1" path="res://Game/Character/princess/princess.png" id="5_c86ge"]
 [ext_resource type="AudioStream" uid="uid://cdiqpmbsqjs7u" path="res://Game/Character/hero/swooshSound.mp3" id="5_stlut"]
+[ext_resource type="AudioStream" uid="uid://b35c20p375mto" path="res://Game/Scenes/princessKidnapCutScene/crushSound.mp3" id="6_73phs"]
 [ext_resource type="Texture2D" uid="uid://2c570v5akiim" path="res://Game/Character/hero/modle og knight.png" id="6_glkkv"]
 [ext_resource type="AudioStream" uid="uid://bck1k76occkbr" path="res://Game/Character/Mob/dragon/dragonFlappingWings.mp3" id="7_yoc7i"]
 [ext_resource type="AudioStream" uid="uid://ovl4gqcnllc" path="res://Game/Character/Mob/dragon/dragonHowlingRoar.mp3" id="8_f7g5k"]
+[ext_resource type="AudioStream" uid="uid://ccktqjy4b8scv" path="res://Game/Scenes/princessKidnapCutScene/femaleScreamSound.mp3" id="13_f7g5k"]
+[ext_resource type="Texture2D" uid="uid://c4oi51sw11db8" path="res://Game/Scenes/tower'sRooftop/top tower.png" id="14_5xdq2"]
+[ext_resource type="Texture2D" uid="uid://cjita35ljq2it" path="res://Game/Character/princess/princess shcok.png" id="15_pja80"]
+[ext_resource type="Texture2D" uid="uid://beq41vmscd53e" path="res://Game/Character/Mob/dragon/dragon arm pull head.png" id="16_qbdm0"]
+[ext_resource type="Texture2D" uid="uid://cpbtot2gm62ed" path="res://Game/Scenes/tower'sRooftop/for hide dragon arm.png" id="17_g1tcr"]
+[ext_resource type="Texture2D" uid="uid://cr7hbxhswru8j" path="res://Game/Scenes/tower'sRooftop/sun.png" id="18_5ntlu"]
+
+[sub_resource type="Animation" id="Animation_hioj5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/blackRectangle:layer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Scene1:layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Scene2:layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Scene2/princess2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 199)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/Scene2/DragonArmPullHead:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(540, 172)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/Scene2/princess2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/blackRectangle/blackRectangle:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/Scene2/sun:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_fp407"]
-length = 15.0
+length = 24.25
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../ModleOgKnight:position")
+tracks/0/path = NodePath("AnimationPlayer/Scene1/ModleOgKnight:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +139,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Princess:position")
+tracks/1/path = NodePath("AnimationPlayer/Scene1/Princess:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +151,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
+tracks/2/path = NodePath("AnimationPlayer/Scene1/Dragon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -55,7 +163,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../ModleOgKnight:scale")
+tracks/3/path = NodePath("AnimationPlayer/Scene1/ModleOgKnight:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -67,7 +175,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../ModleOgKnight:rotation")
+tracks/4/path = NodePath("AnimationPlayer/Scene1/ModleOgKnight:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -79,19 +187,19 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../ColorRect:color")
+tracks/5/path = NodePath("AnimationPlayer/blackRectangle/blackRectangle:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2, 12.8, 15),
-"transitions": PackedFloat32Array(1, 2, 2, 1),
+"times": PackedFloat32Array(0, 2, 12.8, 15, 16.992603, 21.7, 24.25),
+"transitions": PackedFloat32Array(1, 2, 2, 1, 2, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 tracks/6/type = "audio"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../jumpSound")
+tracks/6/path = NodePath("AnimationPlayer/jumpSound")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -139,14 +247,34 @@ tracks/6/keys = {
 "end_offset": 0.6955,
 "start_offset": 0.162,
 "stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.698,
+"start_offset": 0.1615,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.698,
+"start_offset": 0.1615,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.698,
+"start_offset": 0.1615,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.698,
+"start_offset": 0.1615,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.698,
+"start_offset": 0.1615,
+"stream": ExtResource("4_mbo13")
 }],
-"times": PackedFloat32Array(0.1, 0.7, 1.298607, 2.898553, 2.9, 3.2, 3.5, 4.000373, 4.302242, 4.6012635, 6.8352237)
+"times": PackedFloat32Array(0.1, 0.7, 1.298607, 2.898553, 2.9, 3.2, 3.5, 4.000373, 4.302242, 4.6012635, 6.8352237, 15.5, 16, 16.5, 17, 17.5)
 }
 tracks/6/use_blend = true
 tracks/7/type = "audio"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../swooshSound")
+tracks/7/path = NodePath("AnimationPlayer/swooshSound")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -177,7 +305,7 @@ tracks/7/use_blend = true
 tracks/8/type = "audio"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../dragonFlappingWings")
+tracks/8/path = NodePath("AnimationPlayer/dragonFlappingWings")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -196,7 +324,7 @@ tracks/8/use_blend = true
 tracks/9/type = "audio"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../dragonHowlingRoar")
+tracks/9/path = NodePath("AnimationPlayer/dragonHowlingRoar")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -211,7 +339,7 @@ tracks/9/use_blend = true
 tracks/10/type = "audio"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../dragonGrowl")
+tracks/10/path = NodePath("AnimationPlayer/dragonGrowl")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -223,20 +351,153 @@ tracks/10/keys = {
 "times": PackedFloat32Array(1.7)
 }
 tracks/10/use_blend = true
-
-[sub_resource type="Animation" id="Animation_hioj5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimationPlayer/Scene1:layer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimationPlayer/Scene2:layer")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AnimationPlayer/blackRectangle:layer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(15),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AnimationPlayer/Scene2/princess2:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AnimationPlayer/Scene2/princess2:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(15.5, 15.75, 16, 16.25, 16.5, 16.75, 17, 17.25, 17.5, 17.75, 18, 20.035295, 20.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 25.992083, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Vector2(440, 199), Vector2(440, 179), Vector2(440, 199), Vector2(440, 179), Vector2(440, 199), Vector2(440, 179), Vector2(440, 199), Vector2(440, 179), Vector2(440, 199), Vector2(440, 179), Vector2(440, 199), Vector2(440, 199), Vector2(525.31, 199)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AnimationPlayer/Scene2/DragonArmPullHead:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(15, 17.75, 18.3, 18.9, 20.035295, 20.7),
+"transitions": PackedFloat32Array(1, 9.189589, 9.189589, 1, 24.251423, 1),
+"update": 0,
+"values": [Vector2(542, 192), Vector2(486, 166), Vector2(486, 166), Vector2(463.25, 183.115), Vector2(463.25, 183.115), Vector2(544.635, 183.115)]
+}
+tracks/17/type = "audio"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("AnimationPlayer/femaleScreamSound")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"clips": [{
+"end_offset": 11.1477,
+"start_offset": 0.5985,
+"stream": ExtResource("13_f7g5k")
+}, {
+"end_offset": 6.9549,
+"start_offset": 2.9015,
+"stream": ExtResource("13_f7g5k")
+}],
+"times": PackedFloat32Array(18.9, 20.688934)
+}
+tracks/17/use_blend = true
+tracks/18/type = "audio"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("AnimationPlayer/dragonRoar")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": [{
+"end_offset": 0.8675,
+"start_offset": 0.2665,
+"stream": ExtResource("4_g1tcr")
+}],
+"times": PackedFloat32Array(15.9)
+}
+tracks/18/use_blend = true
+tracks/19/type = "audio"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("AnimationPlayer/swoosh5")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"clips": [{
+"end_offset": 0.3285,
+"start_offset": 0.0456,
+"stream": ExtResource("5_5ntlu")
+}],
+"times": PackedFloat32Array(18.8)
+}
+tracks/19/use_blend = true
+tracks/20/type = "audio"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("AnimationPlayer/crushSound")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"clips": [{
+"end_offset": 6.435,
+"start_offset": 1.188,
+"stream": ExtResource("6_73phs")
+}],
+"times": PackedFloat32Array(18.9)
+}
+tracks/20/use_blend = true
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AnimationPlayer/Scene2/sun:frame")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 19),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvfvw"]
@@ -245,45 +506,112 @@ _data = {
 &"cutScene": SubResource("Animation_fp407")
 }
 
-[node name="princessKidnapCutScene" type="CanvasLayer"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xdq2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c86ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pja80")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcf8d"]
+atlas = ExtResource("18_5ntlu")
+region = Rect2(0, 0, 89, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etkot"]
+atlas = ExtResource("18_5ntlu")
+region = Rect2(89, 0, 89, 94)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pja80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcf8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etkot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="princessKidnapCutScene" type="Node2D"]
 script = ExtResource("1_yoc7i")
 
-[node name="ForestTreee" type="Sprite2D" parent="."]
-texture = ExtResource("1_er27n")
-centered = false
-
-[node name="Forest" type="Sprite2D" parent="."]
-texture = ExtResource("2_0fr52")
-centered = false
-
-[node name="DoorToGoInCastle" type="Sprite2D" parent="."]
-position = Vector2(601, 299)
-texture = ExtResource("3_di73t")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("Dragon")
 libraries = {
 &"": SubResource("AnimationLibrary_qvfvw")
 }
 autoplay = "cutScene"
 
-[node name="Dragon" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(-112, 100.99999)
+[node name="Scene1" type="CanvasLayer" parent="AnimationPlayer"]
+
+[node name="ForestTreee" type="Sprite2D" parent="AnimationPlayer/Scene1"]
+texture = ExtResource("1_er27n")
+centered = false
+
+[node name="Forest" type="Sprite2D" parent="AnimationPlayer/Scene1"]
+texture = ExtResource("2_0fr52")
+centered = false
+
+[node name="DoorToGoInCastle" type="Sprite2D" parent="AnimationPlayer/Scene1"]
+position = Vector2(601, 299)
+texture = ExtResource("3_di73t")
+
+[node name="Dragon" type="Sprite2D" parent="AnimationPlayer/Scene1"]
+position = Vector2(683, -75)
 texture = ExtResource("4_q1q7m")
 
-[node name="Princess" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(53, 305)
+[node name="Princess" type="Sprite2D" parent="AnimationPlayer/Scene1"]
+position = Vector2(693, -60)
 texture = ExtResource("5_c86ge")
 
-[node name="ModleOgKnight" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(86, 305)
-scale = Vector2(-1, 1)
+[node name="ModleOgKnight" type="Sprite2D" parent="AnimationPlayer/Scene1"]
+position = Vector2(286, 305)
+rotation = -0.7314879
 texture = ExtResource("6_glkkv")
 
-[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
-offset_right = 642.0
-offset_bottom = 361.0
-color = Color(0, 0, 0, 1)
+[node name="Scene2" type="CanvasLayer" parent="AnimationPlayer"]
+layer = 0
+
+[node name="TopTower" type="Sprite2D" parent="AnimationPlayer/Scene2"]
+texture = ExtResource("14_5xdq2")
+centered = false
+
+[node name="princess2" type="AnimatedSprite2D" parent="AnimationPlayer/Scene2"]
+position = Vector2(440, 199)
+rotation = 3.1415925
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_5xdq2")
+
+[node name="DragonArmPullHead" type="Sprite2D" parent="AnimationPlayer/Scene2"]
+position = Vector2(540, 172)
+scale = Vector2(1.6167843, 1)
+texture = ExtResource("16_qbdm0")
+
+[node name="ForHideDragonArm" type="Sprite2D" parent="AnimationPlayer/Scene2"]
+position = Vector2(544, 184)
+texture = ExtResource("17_g1tcr")
+
+[node name="sun" type="AnimatedSprite2D" parent="AnimationPlayer/Scene2"]
+sprite_frames = SubResource("SpriteFrames_pja80")
+centered = false
+
+[node name="blackRectangle" type="CanvasLayer" parent="AnimationPlayer"]
+layer = 2
+
+[node name="blackRectangle" type="ColorRect" parent="AnimationPlayer/blackRectangle"]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="jumpSound" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
@@ -294,5 +622,21 @@ color = Color(0, 0, 0, 1)
 [node name="dragonHowlingRoar" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="dragonGrowl" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="femaleScreamSound" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="dragonRoar" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="swoosh5" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="crushSound" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="cam2" type="Camera2D" parent="."]
+position = Vector2(640, 0)
+anchor_mode = 0
+
+[node name="cam1" type="Camera2D" parent="."]
+anchor_mode = 0
+enabled = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
