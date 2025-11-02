@@ -1,0 +1,298 @@
+[gd_scene load_steps=16 format=3 uid="uid://bobirkwopqxxy"]
+
+[ext_resource type="Texture2D" uid="uid://c4xma8k7af34j" path="res://Game/Scenes/forest/forest treee.png" id="1_er27n"]
+[ext_resource type="Script" uid="uid://buec8a7rs3xd5" path="res://Game/Scenes/princessKidnapCutScene/princessKidnapCutScene.gd" id="1_yoc7i"]
+[ext_resource type="Texture2D" uid="uid://byc7pqbpf67yy" path="res://Game/Scenes/forest/forest.png" id="2_0fr52"]
+[ext_resource type="Texture2D" uid="uid://c8i7x18cbh1g2" path="res://Game/Scenes/forest/door to go in castle.png" id="3_di73t"]
+[ext_resource type="AudioStream" uid="uid://4pptw63c10sy" path="res://Game/Character/hero/jumpSound.mp3" id="4_mbo13"]
+[ext_resource type="Texture2D" uid="uid://x5i87iy2t0ph" path="res://Game/Character/Mob/dragon/dragon.png" id="4_q1q7m"]
+[ext_resource type="AudioStream" uid="uid://bc8h6wwrfibmp" path="res://Game/Character/Mob/dragon/dragonGrowl.mp3" id="4_vgf8u"]
+[ext_resource type="Texture2D" uid="uid://dennsg3o313d1" path="res://Game/Character/princess/princess.png" id="5_c86ge"]
+[ext_resource type="AudioStream" uid="uid://cdiqpmbsqjs7u" path="res://Game/Character/hero/swooshSound.mp3" id="5_stlut"]
+[ext_resource type="Texture2D" uid="uid://2c570v5akiim" path="res://Game/Character/hero/modle og knight.png" id="6_glkkv"]
+[ext_resource type="AudioStream" uid="uid://bck1k76occkbr" path="res://Game/Character/Mob/dragon/dragonFlappingWings.mp3" id="7_yoc7i"]
+[ext_resource type="AudioStream" uid="uid://ovl4gqcnllc" path="res://Game/Character/Mob/dragon/dragonHowlingRoar.mp3" id="8_f7g5k"]
+
+[sub_resource type="Animation" id="Animation_fp407"]
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ModleOgKnight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.100000024, 0.39999998, 0.70000017, 0.9999999, 1.3000001, 1.5999999, 1.9000001, 2.4, 2.9, 3.0333333, 3.2000003, 3.3333335, 3.4999995, 3.6333337, 3.7999997, 6.8333335, 6.933333, 7.1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(86, 305), Vector2(109.333, 275), Vector2(136, 305), Vector2(159.333, 275), Vector2(186, 305), Vector2(209.333, 275), Vector2(236, 305), Vector2(286, 305), Vector2(286, 305), Vector2(286, 285), Vector2(286, 305), Vector2(286, 285), Vector2(286, 305), Vector2(286, 285), Vector2(286, 305), Vector2(286, 305), Vector2(286, 285), Vector2(286, 305)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Princess:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.100000024, 0.39999998, 0.70000017, 1.0000001, 1.3000001, 1.5999999, 1.9000001, 3.9999995, 4.1333337, 4.2999997, 4.433333, 4.6, 4.733333, 4.9, 6.1, 6.733333),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 2, 1),
+"update": 0,
+"values": [Vector2(53, 305), Vector2(78, 275), Vector2(103, 305), Vector2(128, 275), Vector2(153, 305), Vector2(178, 275), Vector2(203, 305), Vector2(203, 305), Vector2(203, 285), Vector2(203, 305), Vector2(203, 285), Vector2(203, 305), Vector2(203, 285), Vector2(203, 305), Vector2(203, 305), Vector2(693, -60)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.6, 6.1, 6.733333),
+"transitions": PackedFloat32Array(2, 2, 1),
+"update": 0,
+"values": [Vector2(-112, 100.99999), Vector2(185.00002, 288), Vector2(683, -75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ModleOgKnight:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.100000024, 2.6, 7.233334, 7.3666673, 7.5333357, 7.666669, 7.833335, 7.966668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(-1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ModleOgKnight:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.9, 10.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.7314879]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2, 12.8, 15),
+"transitions": PackedFloat32Array(1, 2, 2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../jumpSound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_mbo13")
+}],
+"times": PackedFloat32Array(0.1, 0.7, 1.298607, 2.898553, 2.9, 3.2, 3.5, 4.000373, 4.302242, 4.6012635, 6.8352237)
+}
+tracks/6/use_blend = true
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../swooshSound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.364,
+"start_offset": 0.0485,
+"stream": ExtResource("5_stlut")
+}, {
+"end_offset": 0.364,
+"start_offset": 0.0485,
+"stream": ExtResource("5_stlut")
+}, {
+"end_offset": 0.364,
+"start_offset": 0.0485,
+"stream": ExtResource("5_stlut")
+}, {
+"end_offset": 0.364,
+"start_offset": 0.0485,
+"stream": ExtResource("5_stlut")
+}, {
+"end_offset": 0.364,
+"start_offset": 0.0485,
+"stream": ExtResource("5_stlut")
+}],
+"times": PackedFloat32Array(7.3667, 7.538406, 7.6687646, 7.8337083, 7.9667273)
+}
+tracks/7/use_blend = true
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../dragonFlappingWings")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("7_yoc7i")
+}, {
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("7_yoc7i")
+}],
+"times": PackedFloat32Array(0, 7.2)
+}
+tracks/8/use_blend = true
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../dragonHowlingRoar")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("8_f7g5k")
+}],
+"times": PackedFloat32Array(6.4)
+}
+tracks/9/use_blend = true
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../dragonGrowl")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.6955,
+"start_offset": 0.162,
+"stream": ExtResource("4_vgf8u")
+}],
+"times": PackedFloat32Array(1.7)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_hioj5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvfvw"]
+_data = {
+&"RESET": SubResource("Animation_hioj5"),
+&"cutScene": SubResource("Animation_fp407")
+}
+
+[node name="princessKidnapCutScene" type="CanvasLayer"]
+script = ExtResource("1_yoc7i")
+
+[node name="ForestTreee" type="Sprite2D" parent="."]
+texture = ExtResource("1_er27n")
+centered = false
+
+[node name="Forest" type="Sprite2D" parent="."]
+texture = ExtResource("2_0fr52")
+centered = false
+
+[node name="DoorToGoInCastle" type="Sprite2D" parent="."]
+position = Vector2(601, 299)
+texture = ExtResource("3_di73t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("Dragon")
+libraries = {
+&"": SubResource("AnimationLibrary_qvfvw")
+}
+autoplay = "cutScene"
+
+[node name="Dragon" type="Sprite2D" parent="AnimationPlayer"]
+position = Vector2(-112, 100.99999)
+texture = ExtResource("4_q1q7m")
+
+[node name="Princess" type="Sprite2D" parent="AnimationPlayer"]
+position = Vector2(53, 305)
+texture = ExtResource("5_c86ge")
+
+[node name="ModleOgKnight" type="Sprite2D" parent="AnimationPlayer"]
+position = Vector2(86, 305)
+scale = Vector2(-1, 1)
+texture = ExtResource("6_glkkv")
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+offset_right = 642.0
+offset_bottom = 361.0
+color = Color(0, 0, 0, 1)
+
+[node name="jumpSound" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="swooshSound" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="dragonFlappingWings" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="dragonHowlingRoar" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="dragonGrowl" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://ds71lblosdv0g" path="res://Game/Scenes/sceneChanger/sceneChanger.gd" id="1_o8hws"]
 [ext_resource type="PackedScene" uid="uid://buwwif34u8ifu" path="res://Game/Scenes/loadingScreen/loadingScreen.tscn" id="4_6fyaw"]
 
-[node name="SceneChanger" type="Node"]
+[node name="sceneChanger" type="Node" node_paths=PackedStringArray("primaryScene")]
 script = ExtResource("1_o8hws")
+primaryScene = NodePath("loadingScreen")
 
-[node name="LoadingScreen" parent="." instance=ExtResource("4_6fyaw")]
+[node name="loadingScreen" parent="." instance=ExtResource("4_6fyaw")]

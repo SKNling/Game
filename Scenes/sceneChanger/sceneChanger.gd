@@ -1,57 +1,73 @@
 extends Node
 
-var next_scene = null
-var next_scene_name: String
-@onready var current_scene = $LoadingScreen
 
 
+#region [handling scene switching]
+
+
+		 #VARIABLE#
+@onready var sceneName : String = $".".name
+@export var primaryScene : CanvasLayer
+var secondaryScene = null
+var secondarySceneName: String
+var game_data = Global.game_data
+
+
+		 #FUNCTION#
 func _ready():
-	current_scene.connect('scene_changed', Callable(self, 'handle_scene_changed'))
+	primaryScene.connect('sceneChanged', Callable(self, 'sceneChangedProcess'))
 	Global.load_game_data()
-	#print('game_data loaded!')
-
-
-
-
-
-func handle_scene_changed(current_scene_name: String):
-	#print("signal 'scene_changed' recieved! changing value 'scene_name' -> 'current_scene_name' = ", current_scene_name)
-	match current_scene_name:
-		'loadingScreen':
-			next_scene_name = 'princessKidnapCutScene'
-		_:
-			print('error no matching scene name :(')
-			return
-	#print("loading next scene, 'next_scene' = " + str(next_scene) + '!')
-	next_scene = load('res://Game/Scenes/' + next_scene_name + '/' + next_scene_name + '.tscn').instantiate()
-	#print("loading next scene, 'next_scene' = " + str(next_scene_name) + ', instantiated!')
-	next_scene.layer = -1
-	#print("'" + str(next_scene_name) + "'" + " scene's layer set to -1!")
-	add_child(next_scene)
-	#print("'" + str(next_scene_name) + "'" + "scene, added to parent 'scene switcher'!")
-	#anim.play('fade_in')
-	current_scene.clean_up()
-	current_scene = next_scene
-	current_scene.layer = 1
-	#print("'fade_in' animation played!")
-	next_scene.connect('scene_changed', Callable(self, 'handle_scene_changed'))
 	
-	#print("signal 'scene_changed' has been wired to " + next_scene_name + "! with value 'scene_name' = " + current_scene_name + " from " + "'" + current_scene_name + "'")
-	transfering_data_between_scenes(current_scene, next_scene)
-	next_scene = null
+func sceneChangedProcess(primarySceneName: String):
+	
+	match primarySceneName:
+		'loadingScreen':
+			secondarySceneName = 'princessKidnapCutScene'
+		_:
+			print('error no matching scene name')
+			return
+			
+	secondaryScene = load('res://Game/Scenes/' + secondarySceneName + '/' + secondarySceneName + '.tscn').instantiate()
+	secondaryScene.layer = -1
+	secondaryScene.connect('sceneChanged', Callable(self, 'sceneChangedProcess'))
+	
+	primaryScene.clean_up()
+	await primaryScene.clean_up()
+	add_child(secondaryScene)
+	
+	primaryScene = secondaryScene
+	primaryScene.layer = 1
+	
+	secondaryScene = null
+	#transfering_data_between_scenes(primaryScene, secondaryScene)
+
+
+
+#endregion
+
+
+
+
+
+
+
+
+
+
+
 	
 #func _on_animation_player_animation_finished(anim_name):
 	#match anim_name:
 		#'fade_in':
 			##print("'fade_in' animation finished!")
-			#current_scene.clean_up()
-			##print('current_scene' + " '" + str(current_scene) + "'" + 'cleaned up!')
-			#current_scene = next_scene
-			##print("changing 'current_scene' to 'next_scene', " + str(current_scene) + ' -> ' + str(next_scene))
-			#current_scene.layer = 1
-			##print("'" + str(current_scene) + "'" + " scene's layer set back to 1!")
-			#next_scene = null
-			##print("changed 'next_scene' -> " + str(next_scene))
+			#primaryScene.clean_up()
+			##print('primaryScene' + " '" + str(primaryScene) + "'" + 'cleaned up!')
+			#primaryScene = secondaryScene
+			##print("changing 'primaryScene' to 'secondaryScene', " + str(primaryScene) + ' -> ' + str(secondaryScene))
+			#primaryScene.layer = 1
+			##print("'" + str(primaryScene) + "'" + " scene's layer set back to 1!")
+			#secondaryScene = null
+			##print("changed 'secondaryScene' -> " + str(secondaryScene))
 			#anim.play("fade_out")
 			##print("'fade_out' animation played!")
 		#'fade_out':
