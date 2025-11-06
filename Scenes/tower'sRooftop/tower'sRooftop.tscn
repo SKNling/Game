@@ -1,3 +1,69 @@
-[gd_scene format=3 uid="uid://c0dblquujd7hi"]
+[gd_scene load_steps=11 format=3 uid="uid://c0dblquujd7hi"]
+
+[ext_resource type="Texture2D" uid="uid://c4oi51sw11db8" path="res://Game/Scenes/tower'sRooftop/top tower.png" id="1_6etp4"]
+[ext_resource type="Texture2D" uid="uid://beq41vmscd53e" path="res://Game/Character/Mob/dragon/dragon arm pull head.png" id="2_4dtlf"]
+[ext_resource type="Texture2D" uid="uid://dennsg3o313d1" path="res://Game/Character/princess/princess.png" id="2_mg34q"]
+[ext_resource type="Texture2D" uid="uid://cpbtot2gm62ed" path="res://Game/Scenes/tower'sRooftop/for hide dragon arm.png" id="3_mg34q"]
+[ext_resource type="Texture2D" uid="uid://cjita35ljq2it" path="res://Game/Character/princess/princess shcok.png" id="3_sg7kp"]
+[ext_resource type="Texture2D" uid="uid://cr7hbxhswru8j" path="res://Game/Scenes/tower'sRooftop/sun.png" id="4_sg7kp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcf8d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mg34q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sg7kp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcf8d"]
+atlas = ExtResource("4_sg7kp")
+region = Rect2(0, 0, 89, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etkot"]
+atlas = ExtResource("4_sg7kp")
+region = Rect2(89, 0, 89, 94)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvj4n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcf8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etkot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Tower\'sRooftop" type="Node"]
+
+[node name="TopTower" type="Sprite2D" parent="."]
+texture = ExtResource("1_6etp4")
+centered = false
+
+[node name="princess" type="AnimatedSprite2D" parent="."]
+position = Vector2(440, 199)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_vcf8d")
+
+[node name="DragonArmPullHead" type="Sprite2D" parent="."]
+position = Vector2(540, 172)
+scale = Vector2(1.6167843, 1)
+texture = ExtResource("2_4dtlf")
+
+[node name="ForHideDragonArm" type="Sprite2D" parent="."]
+position = Vector2(544, 184)
+texture = ExtResource("3_mg34q")
+
+[node name="sun" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wvj4n")
+centered = false
