@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e7xjf1vy3dni"
-path="res://.godot/imported/light middle.png-9369e564b2a730d5dc3b9bbf659534bf.ctex"
+uid="uid://c5k6uei8he4ir"
+path="res://.godot/imported/ass monster.png-d4a9c82018b82f0daf24d16f693626f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Scenes/tower'sRoom/light middle.png"
-dest_files=["res://.godot/imported/light middle.png-9369e564b2a730d5dc3b9bbf659534bf.ctex"]
+source_file="res://Game/Character/Mob/assMonster/ass monster.png"
+dest_files=["res://.godot/imported/ass monster.png-d4a9c82018b82f0daf24d16f693626f0.ctex"]
 
 [params]
 

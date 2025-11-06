@@ -1,0 +1,146 @@
+[gd_scene load_steps=20 format=3 uid="uid://c3kfrvj21voqe"]
+
+[ext_resource type="Script" uid="uid://osqnp13x1vlp" path="res://Game/Scenes/tower'sRoom1/tower's_room1.gd" id="1_d2cbm"]
+[ext_resource type="Texture2D" uid="uid://bhyxajkcxn5o" path="res://Game/Scenes/tower'sRoom1/inside tower.png" id="2_m1ulc"]
+[ext_resource type="Texture2D" uid="uid://chya8n6ygwam3" path="res://Game/Scenes/tower'sRoom1/light side.png" id="3_l41l0"]
+[ext_resource type="Texture2D" uid="uid://e7xjf1vy3dni" path="res://Game/Scenes/tower'sRoom1/light middle.png" id="4_bgpsb"]
+[ext_resource type="Texture2D" uid="uid://bsefm3pmhuw6o" path="res://Game/Scenes/tower'sRoom1/door inside tower.png" id="5_ac77e"]
+[ext_resource type="PackedScene" uid="uid://tf7hmr1keu85" path="res://Game/Character/hero/hero.tscn" id="6_onp1s"]
+[ext_resource type="PackedScene" uid="uid://dua7vldgwffjj" path="res://Game/Character/Mob/slime/slime.tscn" id="7_m1ulc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pneql"]
+atlas = ExtResource("3_l41l0")
+region = Rect2(3, 4, 23, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3k1w"]
+atlas = ExtResource("3_l41l0")
+region = Rect2(29, 4, 23, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pgfr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pneql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3k1w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjdi7"]
+atlas = ExtResource("4_bgpsb")
+region = Rect2(5, 5, 22, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpxm3"]
+atlas = ExtResource("4_bgpsb")
+region = Rect2(37, 5, 22, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q6y6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjdi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpxm3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxwfd"]
+size = Vector2(31.5, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt6lh"]
+size = Vector2(33, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w26mp"]
+size = Vector2(600.5, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjid2"]
+atlas = ExtResource("5_ac77e")
+region = Rect2(0, 0, 42, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmxeg"]
+atlas = ExtResource("5_ac77e")
+region = Rect2(43, 0, 42, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3u5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjid2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmxeg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="tower\'sRoom1" type="Node2D"]
+script = ExtResource("1_d2cbm")
+
+[node name="insideTower" type="Sprite2D" parent="."]
+texture = ExtResource("2_m1ulc")
+centered = false
+
+[node name="lightSide" type="AnimatedSprite2D" parent="."]
+position = Vector2(597, 255)
+sprite_frames = SubResource("SpriteFrames_7pgfr")
+autoplay = "default"
+
+[node name="lightSide2" type="AnimatedSprite2D" parent="."]
+position = Vector2(44, 240)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_7pgfr")
+autoplay = "default"
+
+[node name="lightMiddle" type="AnimatedSprite2D" parent="."]
+position = Vector2(307, 215)
+sprite_frames = SubResource("SpriteFrames_q6y6x")
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16.5, 180)
+shape = SubResource("RectangleShape2D_oxwfd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(623.5, 180)
+shape = SubResource("RectangleShape2D_qt6lh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(317, 349)
+shape = SubResource("RectangleShape2D_w26mp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(319.75, 17)
+shape = SubResource("RectangleShape2D_w26mp")
+
+[node name="door" type="AnimatedSprite2D" parent="."]
+position = Vector2(549, 294)
+sprite_frames = SubResource("SpriteFrames_x3u5g")
+
+[node name="Hero" parent="." instance=ExtResource("6_onp1s")]
+position = Vector2(90, 304)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 229.0
+offset_top = 44.0
+offset_right = 420.0
+offset_bottom = 79.0
+text = "Floor 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slime" parent="." instance=ExtResource("7_m1ulc")]
+position = Vector2(367, 280)

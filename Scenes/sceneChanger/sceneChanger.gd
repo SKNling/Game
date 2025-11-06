@@ -8,9 +8,11 @@ extends Node
 		 #VARIABLE#
 @onready var sceneName : String = $".".name
 @export var primaryScene : Node2D
+@onready var animationPlayer = $AnimationPlayer
 var secondaryScene = null
 var secondarySceneName: String
 var game_data = Global.game_data
+
 
 
 		 #FUNCTION#
@@ -23,6 +25,12 @@ func sceneChangedProcess(primarySceneName: String):
 	match primarySceneName:
 		'loadingScreen':
 			secondarySceneName = 'princessKidnapCutScene'
+		'princessKidnapCutScene':
+			secondarySceneName = "tower'sPracticeRoom"
+		"tower'sPracticeRoom":
+			secondarySceneName = "tower'sRoom1"
+		"tower'sRoom1":
+			secondarySceneName = "tower'sRoom2"
 		_:
 			print('error no matching scene name')
 			return
@@ -31,6 +39,9 @@ func sceneChangedProcess(primarySceneName: String):
 	#secondaryScene.layer = -1
 	secondaryScene.connect('sceneChanged', Callable(self, 'sceneChangedProcess'))
 	
+	if primarySceneName != 'loadingScreen':
+		animationPlayer.play("TowerFade")
+	await get_tree().create_timer(0.5).timeout
 	primaryScene.clean_up()
 	await primaryScene.clean_up()
 	add_child(secondaryScene)

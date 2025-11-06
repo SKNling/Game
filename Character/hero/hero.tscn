@@ -1,17 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://tf7hmr1keu85"]
+[gd_scene load_steps=8 format=3 uid="uid://tf7hmr1keu85"]
 
 [ext_resource type="Texture2D" uid="uid://2c570v5akiim" path="res://Game/Character/hero/modle og knight.png" id="1_lvrdp"]
 [ext_resource type="Script" uid="uid://24utlwak13vt" path="res://Game/Character/hero/hero.gd" id="1_y7j7r"]
+[ext_resource type="PackedScene" uid="uid://d17uchubab6wh" path="res://Components/scenes/HealthComponent.tscn" id="3_xrdsy"]
+[ext_resource type="PackedScene" uid="uid://ddila5mr2jid6" path="res://Components/scenes/HurtBoxComponent.tscn" id="4_lguug"]
+[ext_resource type="PackedScene" uid="uid://dh1v3hjn738h1" path="res://Game/Character/hero/fireBall/wand.tscn" id="5_lguug"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rritn"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyvpm"]
+size = Vector2(28, 30)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yspxq"]
+radius = 5.0
+height = 22.0
 
 [node name="Hero" type="CharacterBody2D"]
-collision_layer = 128
+collision_layer = 0
 script = ExtResource("1_y7j7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pyvpm")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Hero"] instance=ExtResource("4_lguug")]
+collision_layer = 2
+collision_mask = 32
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+shape = SubResource("CapsuleShape2D_yspxq")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("progress_bar") instance=ExtResource("3_xrdsy")]
+progress_bar = NodePath("../ProgressBar")
 
 [node name="ModleOgKnight" type="Sprite2D" parent="."]
 texture = ExtResource("1_lvrdp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_rritn")
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -33.000004
+offset_right = 85.0
+offset_bottom = -6.000004
+scale = Vector2(0.4025357, 0.4025357)
+
+[node name="wand" parent="." instance=ExtResource("5_lguug")]
+position = Vector2(14, -1)

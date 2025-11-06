@@ -15,8 +15,13 @@ signal sceneChanged(sceneName)
 
 
 		 #FUNCTION#
+func _process(delta):
+	if animation_player.is_playing() and Input.is_action_just_pressed("interact"):
+		emit_signal('sceneChanged', sceneName)
 func _on_animation_player_animation_finished(anim_name):
 	emit_signal('sceneChanged', sceneName)
+func clean_up():
+	queue_free()
 
 
 #endregion

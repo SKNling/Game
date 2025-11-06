@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh1v3hjn738h1"]
+
+[ext_resource type="Script" uid="uid://d4f538udr0gmx" path="res://Game/Character/hero/wand.gd" id="1_frntu"]
+[ext_resource type="Texture2D" uid="uid://dkm36lejn251t" path="res://Game/Character/hero/fireBall/harry-potter-wand.png" id="2_ocvba"]
+
+[node name="wand" type="Node2D"]
+script = ExtResource("1_frntu")
+
+[node name="HarryPotterWand" type="Sprite2D" parent="."]
+position = Vector2(11, 0)
+rotation = 1.5707964
+scale = Vector2(0.059358615, 0.059358615)
+texture = ExtResource("2_ocvba")

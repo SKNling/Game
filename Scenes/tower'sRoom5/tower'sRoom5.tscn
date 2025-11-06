@@ -1,0 +1,142 @@
+[gd_scene load_steps=19 format=3 uid="uid://c7q8ls44gdf6t"]
+
+[ext_resource type="Script" uid="uid://dpsuepd054kxg" path="res://Game/Scenes/tower'sRoom5/tower's_room_5.gd" id="1_cafj1"]
+[ext_resource type="Texture2D" uid="uid://bhyxajkcxn5o" path="res://Game/Scenes/tower'sRoom1/inside tower.png" id="2_d8dm7"]
+[ext_resource type="Texture2D" uid="uid://chya8n6ygwam3" path="res://Game/Scenes/tower'sRoom1/light side.png" id="3_d4ubq"]
+[ext_resource type="Texture2D" uid="uid://e7xjf1vy3dni" path="res://Game/Scenes/tower'sRoom1/light middle.png" id="4_ph3y3"]
+[ext_resource type="Texture2D" uid="uid://bsefm3pmhuw6o" path="res://Game/Scenes/tower'sRoom1/door inside tower.png" id="5_4nqmg"]
+[ext_resource type="PackedScene" uid="uid://tf7hmr1keu85" path="res://Game/Character/hero/hero.tscn" id="6_eqesv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pneql"]
+atlas = ExtResource("3_d4ubq")
+region = Rect2(3, 4, 23, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3k1w"]
+atlas = ExtResource("3_d4ubq")
+region = Rect2(29, 4, 23, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v03pq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pneql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3k1w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjdi7"]
+atlas = ExtResource("4_ph3y3")
+region = Rect2(5, 5, 22, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpxm3"]
+atlas = ExtResource("4_ph3y3")
+region = Rect2(37, 5, 22, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2xt1s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjdi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpxm3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71qb1"]
+size = Vector2(31.5, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhbnh"]
+size = Vector2(33, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge015"]
+size = Vector2(600.5, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjid2"]
+atlas = ExtResource("5_4nqmg")
+region = Rect2(0, 0, 42, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmxeg"]
+atlas = ExtResource("5_4nqmg")
+region = Rect2(43, 0, 42, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fu7p4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjid2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmxeg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="tower\'sRoom2" type="Node2D"]
+script = ExtResource("1_cafj1")
+
+[node name="insideTower" type="Sprite2D" parent="."]
+texture = ExtResource("2_d8dm7")
+centered = false
+
+[node name="lightSide" type="AnimatedSprite2D" parent="."]
+position = Vector2(597, 255)
+sprite_frames = SubResource("SpriteFrames_v03pq")
+autoplay = "default"
+
+[node name="lightSide2" type="AnimatedSprite2D" parent="."]
+position = Vector2(44, 240)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_v03pq")
+autoplay = "default"
+
+[node name="lightMiddle" type="AnimatedSprite2D" parent="."]
+position = Vector2(307, 215)
+sprite_frames = SubResource("SpriteFrames_2xt1s")
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16.5, 180)
+shape = SubResource("RectangleShape2D_71qb1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(623.5, 180)
+shape = SubResource("RectangleShape2D_xhbnh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(317, 349)
+shape = SubResource("RectangleShape2D_ge015")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(319.75, 17)
+shape = SubResource("RectangleShape2D_ge015")
+
+[node name="door" type="AnimatedSprite2D" parent="."]
+position = Vector2(549, 294)
+sprite_frames = SubResource("SpriteFrames_fu7p4")
+
+[node name="Hero" parent="." instance=ExtResource("6_eqesv")]
+position = Vector2(90, 304)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 229.0
+offset_top = 44.0
+offset_right = 420.0
+offset_bottom = 79.0
+text = "Floor 5"
+horizontal_alignment = 1
+vertical_alignment = 1

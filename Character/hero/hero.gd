@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 200
 const JUMP_VELOCITY = -400.0
+@onready var hero = $ModleOgKnight
 
 
 func _physics_process(delta):
@@ -21,5 +22,10 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if velocity.x > 1:
+		hero.flip_h = false
+	elif velocity.x < -1:
+		hero.flip_h = true
 
 	move_and_slide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfcqtwnde7i7x"
-path="res://.godot/imported/chain furniture.png-52f4b4a9aa02db771d2d883eb52ac2e9.ctex"
+uid="uid://d2q1sgsxlgc1u"
+path="res://.godot/imported/caterpilla.png-f15e439d94786c89ca820b93e36a4dc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Scenes/tower'sRoom/chain furniture.png"
-dest_files=["res://.godot/imported/chain furniture.png-52f4b4a9aa02db771d2d883eb52ac2e9.ctex"]
+source_file="res://Game/Character/Mob/worm/caterpilla.png"
+dest_files=["res://.godot/imported/caterpilla.png-f15e439d94786c89ca820b93e36a4dc3.ctex"]
 
 [params]
 

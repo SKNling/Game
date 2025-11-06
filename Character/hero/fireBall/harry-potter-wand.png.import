@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx2ya5p1heq6i"
-path="res://.godot/imported/box.png-d921d613fb7c87f0e62ee5af7d83d444.ctex"
+uid="uid://dkm36lejn251t"
+path="res://.godot/imported/harry-potter-wand.png-c7983c0847672b95ba57aae14bfeb36a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Scenes/tower'sRoom/box.png"
-dest_files=["res://.godot/imported/box.png-d921d613fb7c87f0e62ee5af7d83d444.ctex"]
+source_file="res://Game/Character/hero/fireBall/harry-potter-wand.png"
+dest_files=["res://.godot/imported/harry-potter-wand.png-c7983c0847672b95ba57aae14bfeb36a.ctex"]
 
 [params]
 
