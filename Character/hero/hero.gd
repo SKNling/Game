@@ -3,29 +3,86 @@ extends CharacterBody2D
 
 const SPEED = 200
 const JUMP_VELOCITY = -400.0
-@onready var hero = $ModleOgKnight
+@onready var sprite = $ModleOgKnight
+@onready var player = $"."
+@onready var animationPlayer = $AnimationPlayer
+
+enum states {
+	IDLE,
+	WALK,
+	JUMP,
+	FALL,
+	ATTACK,
+	DEAD
+}
+var currentState = states.IDLE
+
+@onready var attackComponent = $AttackComponent
+func hit():
+	attackComponent.monitorable = true
+func endOfHit():
+	attackComponent.monitorable = false
+
+#region [BasicMovement]
+@onready var attackArea = $AttackComponent/CollisionShape2D
+
+func _physics_process(delta: float) -> void:
+	handle_gravity(delta)
+	handle_movement(delta)
 
 
-func _physics_process(delta):
-	# Add the gravity.
+func handle_gravity(delta: float) -> void:
+	var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y += gravity * delta
 
-	# Handle jump.
+func handle_movement(delta: float) -> void:
+	
+	if currentState != states.ATTACK:
+		if currentState == states.IDLE:
+			sprite.play("IDLE")
+		elif currentState == states.WALK:
+			sprite.play("WALK")
+		elif currentState == states.JUMP:
+			sprite.play("JUMP")
+		elif currentState == states.FALL:
+			sprite.play("FALL")
+		elif currentState == states.DEAD:
+			sprite.play("DEAD")
+	else:
+		animationPlayer.play("ATTACK")
+
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("walk_left", "walk_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	if velocity.x > 1:
-		hero.flip_h = false
-	elif velocity.x < -1:
-		hero.flip_h = true
-
 	move_and_slide()
+
+	if velocity.y < 0:
+		currentState = states.JUMP
+	elif velocity.y > 0:
+		currentState = states.FALL
+
+
+
+	if velocity.x > 1:
+		sprite.flip_h = false
+		attackArea.position.x = 42
+		if velocity.y == 0:
+			currentState = states.WALK
+	elif velocity.x < -1:
+		attackArea.position.x = -42
+		sprite.flip_h = true
+		if velocity.y == 0:
+			currentState = states.WALK
+		
+	if velocity.x == 0 and velocity.y == 0:
+		currentState = states.IDLE
+		
+		
+#endregion

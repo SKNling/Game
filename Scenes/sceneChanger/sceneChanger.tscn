@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://ds71lblosdv0g" path="res://Game/Scenes/sceneChanger/sceneChanger.gd" id="1_o8hws"]
 [ext_resource type="PackedScene" uid="uid://buwwif34u8ifu" path="res://Game/Scenes/loadingScreen/loadingScreen.tscn" id="4_6fyaw"]
 
+[sub_resource type="Animation" id="Animation_75c38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_0k411"]
 resource_name = "TowerFade"
 step = 0.1
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.23325841, 3.1383355, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_75c38"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwe8i"]
@@ -59,3 +59,36 @@ offset_right = 640.0
 offset_bottom = 361.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 28.0
+offset_top = 259.0
+offset_right = 70.0
+offset_bottom = 290.0
+text = "load"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 78.0
+offset_top = 259.0
+offset_right = 121.0
+offset_bottom = 290.0
+text = "save"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 34.0
+offset_top = 299.0
+offset_right = 61.0
+offset_bottom = 330.0
+text = "+1"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 75.0
+offset_top = 297.0
+offset_right = 128.0
+offset_bottom = 328.0
+text = "check"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]

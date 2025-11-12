@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dua7vldgwffjj"]
+[gd_scene load_steps=13 format=3 uid="uid://dua7vldgwffjj"]
 
-[ext_resource type="Texture2D" uid="uid://dr322u8hextln" path="res://Game/Character/Mob/slime/slime.png" id="1_cad02"]
-[ext_resource type="Script" uid="uid://didbk7021o6eq" path="res://Components/scripts/groundEnemy.gd" id="1_smrka"]
-[ext_resource type="PackedScene" uid="uid://ddila5mr2jid6" path="res://Components/scenes/HurtBoxComponent.tscn" id="2_6sf81"]
-[ext_resource type="PackedScene" uid="uid://d17uchubab6wh" path="res://Components/scenes/HealthComponent.tscn" id="3_smrka"]
-[ext_resource type="PackedScene" uid="uid://cqs2x6bxah4cl" path="res://Components/scenes/AttackComponent.tscn" id="4_23i7e"]
-[ext_resource type="PackedScene" uid="uid://dv1rmm7o47fr0" path="res://Components/scenes/DetectionArea.tscn" id="6_23i7e"]
+[ext_resource type="Script" uid="uid://bieqhii0u8bns" path="res://Game/Character/Mob/slime/slime.gd" id="1_smrka"]
+[ext_resource type="PackedScene" uid="uid://cqs2x6bxah4cl" path="res://Components/scenes/AttackComponent.tscn" id="2_04xl5"]
+[ext_resource type="PackedScene" uid="uid://ddila5mr2jid6" path="res://Components/scenes/HurtBoxComponent.tscn" id="3_o4in7"]
+[ext_resource type="PackedScene" uid="uid://d17uchubab6wh" path="res://Components/scenes/HealthComponent.tscn" id="5_rwl7a"]
+[ext_resource type="Texture2D" uid="uid://dr322u8hextln" path="res://Game/Character/Mob/slime/slime.png" id="6_7kmil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvli2"]
 size = Vector2(135, 87)
@@ -16,35 +15,47 @@ size = Vector2(151, 86)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdk0w"]
 size = Vector2(165, 87)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt4qh"]
-size = Vector2(338, 87)
+[sub_resource type="AtlasTexture" id="AtlasTexture_okrip"]
+atlas = ExtResource("6_7kmil")
+region = Rect2(0, 0, 136, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c270"]
+atlas = ExtResource("6_7kmil")
+region = Rect2(138, 0, 132, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0raq"]
-atlas = ExtResource("1_cad02")
+atlas = ExtResource("6_7kmil")
 region = Rect2(0, 0, 135, 86)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_av3eh"]
-atlas = ExtResource("1_cad02")
-region = Rect2(135, 0, 135, 86)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sf81"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_okrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c270")
+}],
+"loop": true,
+"name": &"chasing_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r0raq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_av3eh")
+"texture": SubResource("AtlasTexture_5c270")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
-[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("DetectionArea")]
+[node name="slime" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
 collision_layer = 0
 script = ExtResource("1_smrka")
-DetectionArea = NodePath("DetectionArea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -55,17 +66,22 @@ offset_left = -51.0
 offset_top = -77.0
 offset_right = 54.0
 offset_bottom = -50.0
+metadata/_edit_use_anchors_ = true
 
-[node name="AttackComponent" parent="." instance=ExtResource("4_23i7e")]
+[node name="AttackComponent" parent="." instance=ExtResource("2_04xl5")]
 collision_layer = 32
 collision_mask = 0
 BASE_ATTACK = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
-position = Vector2(1.5, -1)
+position = Vector2(-162.30931, 0)
 shape = SubResource("RectangleShape2D_xjlye")
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["mob"] instance=ExtResource("2_6sf81")]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackComponent"]
+position = Vector2(163.33333, 0)
+shape = SubResource("RectangleShape2D_xjlye")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["mob"] instance=ExtResource("3_o4in7")]
 collision_layer = 4
 collision_mask = 16
 health_component = NodePath("../HealthComponent")
@@ -74,16 +90,20 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_wdk0w")
 
-[node name="DetectionArea" parent="." instance=ExtResource("6_23i7e")]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(2, -0.5)
-shape = SubResource("RectangleShape2D_xt4qh")
-
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("progress_bar") instance=ExtResource("3_smrka")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("progress_bar") instance=ExtResource("5_rwl7a")]
 progress_bar = NodePath("../ProgressBar")
 
 [node name="Slime" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6sf81")
+autoplay = "default"
+frame_progress = 0.9220277
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-400, 0)
+collision_mask = 64
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

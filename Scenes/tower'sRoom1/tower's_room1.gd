@@ -7,7 +7,7 @@ extends Node2D
 
 		 #VARIABLE#
 @onready var sceneName = $".".name
-var game_data = Global.game_data
+@export var goToScene = "tower'sRoom2"
 var doorOpen = false
 @onready var door = $door
 signal sceneChanged(sceneName)
@@ -19,7 +19,7 @@ signal sceneChanged(sceneName)
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if doorOpen:
-			emit_signal('sceneChanged', sceneName)
+			emit_signal('sceneChanged', goToScene)
 		elif doorOpen == false:
 			door.frame = 2
 			doorOpen = true

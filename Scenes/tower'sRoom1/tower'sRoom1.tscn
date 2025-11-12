@@ -142,5 +142,8 @@ text = "Floor 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slime" parent="." instance=ExtResource("7_m1ulc")]
-position = Vector2(367, 280)
+[node name="slime" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_m1ulc")]
+position = Vector2(448, 317)
+player = NodePath("../Hero")
+CHASE_SPEED = 300
+ACCELERATION = 600

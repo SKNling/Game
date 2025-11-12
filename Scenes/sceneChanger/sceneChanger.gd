@@ -1,8 +1,25 @@
 extends Node
 
+func _ready():
+	Global.loadData()
+	
+	primaryScene.connect('sceneChanged', Callable(self, 'sceneChangedProcess')) #[handlingSceneSwitching]
+	
+	
+	if saveDataDebugging == false: #[saveDataDebugging]
+		button.visible = false
+		button2.visible = false
+		button3.visible = false
+		button4.visible = false
+	elif saveDataDebugging:
+		button.visible = true
+		button2.visible = true
+		button3.visible = true
+		button4.visible = true
+	else:
+		print("Please check at saveDataDebugging")
 
-
-#region [handling scene switching]
+#region [handlingSceneSwitching]
 
 
 		 #VARIABLE#
@@ -11,26 +28,49 @@ extends Node
 @onready var animationPlayer = $AnimationPlayer
 var secondaryScene = null
 var secondarySceneName: String
-var game_data = Global.game_data
 
 
 
 		 #FUNCTION#
-func _ready():
-	primaryScene.connect('sceneChanged', Callable(self, 'sceneChangedProcess'))
-	Global.load_game_data()
-	
 func sceneChangedProcess(primarySceneName: String):
 	
 	match primarySceneName:
 		'loadingScreen':
-			secondarySceneName = 'princessKidnapCutScene'
+			secondarySceneName = 'loadingScreen'
 		'princessKidnapCutScene':
-			secondarySceneName = "tower'sPracticeRoom"
+			secondarySceneName = "princessKidnapCutScene"
 		"tower'sPracticeRoom":
-			secondarySceneName = "tower'sRoom1"
+			secondarySceneName = "tower'sPracticeRoom"
 		"tower'sRoom1":
+			secondarySceneName = "tower'sRoom1"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom2":
 			secondarySceneName = "tower'sRoom2"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom3":
+			secondarySceneName = "tower'sRoom3"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom4":
+			secondarySceneName = "tower'sRoom4"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom5":
+			secondarySceneName = "tower'sRoom5"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom6":
+			secondarySceneName = "tower'sRoom6"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom7":
+			secondarySceneName = "tower'sRoom7"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom8":
+			secondarySceneName = "tower'sRoom8"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom9":
+			secondarySceneName = "tower'sRoom9"
+			animationPlayer.play("TowerFade")
+		"tower'sRoom10":
+			secondarySceneName = "tower'sRoom10"
+			animationPlayer.play("TowerFade")
 		_:
 			print('error no matching scene name')
 			return
@@ -39,8 +79,7 @@ func sceneChangedProcess(primarySceneName: String):
 	#secondaryScene.layer = -1
 	secondaryScene.connect('sceneChanged', Callable(self, 'sceneChangedProcess'))
 	
-	if primarySceneName != 'loadingScreen':
-		animationPlayer.play("TowerFade")
+	
 	await get_tree().create_timer(0.5).timeout
 	primaryScene.clean_up()
 	await primaryScene.clean_up()
@@ -59,34 +98,27 @@ func sceneChangedProcess(primarySceneName: String):
 
 
 
+#region [saveDataDebugging]
 
 
+		 #VARIABLE#
+@export var saveDataDebugging:bool
+@onready var button = $Button
+@onready var button2 = $Button2
+@onready var button3 = $Button3
+@onready var button4 = $Button4
+
+		 #FUNCTION#
+func _on_button_pressed():
+	Global.loadData()
+func _on_button_2_pressed():
+	Global.saveData()
+func _on_button_3_pressed():
+	Global.debugNumber += 1
+	Global.firstTime = !Global.firstTime
+func _on_button_4_pressed():
+	print(Global.debugNumber)
+	print(Global.firstTime)
 
 
-
-
-
-
-	
-#func _on_animation_player_animation_finished(anim_name):
-	#match anim_name:
-		#'fade_in':
-			##print("'fade_in' animation finished!")
-			#primaryScene.clean_up()
-			##print('primaryScene' + " '" + str(primaryScene) + "'" + 'cleaned up!')
-			#primaryScene = secondaryScene
-			##print("changing 'primaryScene' to 'secondaryScene', " + str(primaryScene) + ' -> ' + str(secondaryScene))
-			#primaryScene.layer = 1
-			##print("'" + str(primaryScene) + "'" + " scene's layer set back to 1!")
-			#secondaryScene = null
-			##print("changed 'secondaryScene' -> " + str(secondaryScene))
-			#anim.play("fade_out")
-			##print("'fade_out' animation played!")
-		#'fade_out':
-			#pass
-			##print("'fade_out' animation finished!")
-
-
-func transfering_data_between_scenes(old_scene, new_scene):
-	new_scene.load_game_data(old_scene.game_data)
-	new_scene.game_data = Global.game_data
+#endregion

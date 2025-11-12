@@ -7,7 +7,7 @@ extends Node2D
 
 		 #VARIABLE#
 @onready var sceneName = $".".name
-var game_data = Global.game_data
+
 var doorOpen = false
 @onready var door = $door
 signal sceneChanged(sceneName)

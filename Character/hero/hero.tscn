@@ -1,23 +1,139 @@
-[gd_scene load_steps=8 format=3 uid="uid://tf7hmr1keu85"]
+[gd_scene load_steps=21 format=3 uid="uid://tf7hmr1keu85"]
 
-[ext_resource type="Texture2D" uid="uid://2c570v5akiim" path="res://Game/Character/hero/modle og knight.png" id="1_lvrdp"]
 [ext_resource type="Script" uid="uid://24utlwak13vt" path="res://Game/Character/hero/hero.gd" id="1_y7j7r"]
 [ext_resource type="PackedScene" uid="uid://d17uchubab6wh" path="res://Components/scenes/HealthComponent.tscn" id="3_xrdsy"]
 [ext_resource type="PackedScene" uid="uid://ddila5mr2jid6" path="res://Components/scenes/HurtBoxComponent.tscn" id="4_lguug"]
-[ext_resource type="PackedScene" uid="uid://dh1v3hjn738h1" path="res://Game/Character/hero/fireBall/wand.tscn" id="5_lguug"]
+[ext_resource type="Texture2D" uid="uid://bg0y8vhhxrq4" path="res://Game/Character/hero/animation/IDLE ANIMATION.png" id="4_pyvpm"]
+[ext_resource type="Texture2D" uid="uid://d2pfnvipdb7te" path="res://Game/Character/hero/animation/JUMP ANIAMTION.png" id="5_yspxq"]
+[ext_resource type="Texture2D" uid="uid://b8bn88dkdhahf" path="res://Game/Character/hero/animation/WALK ANIMATION.png" id="6_y65ek"]
+[ext_resource type="Script" uid="uid://2py5sud0wvq6" path="res://Components/scripts/AttackComponent.gd" id="7_yspxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyvpm"]
-size = Vector2(28, 30)
+size = Vector2(28, 29)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yspxq"]
 radius = 5.0
 height = 22.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yspxq"]
+atlas = ExtResource("4_pyvpm")
+region = Rect2(0, 0, 43, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y65ek"]
+atlas = ExtResource("4_pyvpm")
+region = Rect2(44, 0, 42, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p01g"]
+atlas = ExtResource("5_yspxq")
+region = Rect2(0, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xo64"]
+atlas = ExtResource("6_y65ek")
+region = Rect2(0, 0, 43, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkjq6"]
+atlas = ExtResource("6_y65ek")
+region = Rect2(45, 0, 43, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1p01g"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"ATTACK",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"DEAD",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"FALL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yspxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y65ek")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p01g")
+}],
+"loop": true,
+"name": &"JUMP",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xo64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkjq6")
+}],
+"loop": true,
+"name": &"WALK",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_y65ek"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_yspxq"]
+resource_name = "ATTACK"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModleOgKnight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_1p01g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModleOgKnight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1p01g"]
+_data = {
+&"ATTACK": SubResource("Animation_yspxq"),
+&"RESET": SubResource("Animation_1p01g"),
+&"new_animation": SubResource("Animation_y65ek")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo64"]
+size = Vector2(75.5, 20)
+
 [node name="Hero" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 64
 script = ExtResource("1_y7j7r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_pyvpm")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Hero"] instance=ExtResource("4_lguug")]
@@ -26,20 +142,35 @@ collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(-2, 10)
 shape = SubResource("CapsuleShape2D_yspxq")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("progress_bar") instance=ExtResource("3_xrdsy")]
 progress_bar = NodePath("../ProgressBar")
 
-[node name="ModleOgKnight" type="Sprite2D" parent="."]
-texture = ExtResource("1_lvrdp")
+[node name="ModleOgKnight" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1p01g")
+animation = &"ATTACK"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -20.0
-offset_top = -33.000004
-offset_right = 85.0
-offset_bottom = -6.000004
+offset_left = -21.000002
+offset_top = -33.0
+offset_right = 84.0
+offset_bottom = -6.0
 scale = Vector2(0.4025357, 0.4025357)
 
-[node name="wand" parent="." instance=ExtResource("5_lguug")]
-position = Vector2(14, -1)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1p01g")
+}
+
+[node name="AttackComponent" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("7_yspxq")
+BASE_ATTACK = 25.0
+metadata/_custom_type_script = "uid://2py5sud0wvq6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+position = Vector2(55.25, 5)
+shape = SubResource("RectangleShape2D_8xo64")
