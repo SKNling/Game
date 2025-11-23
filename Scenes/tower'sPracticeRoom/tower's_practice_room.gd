@@ -8,23 +8,24 @@ extends Node2D
 		 #VARIABLE#
 @onready var sceneName = $".".name
 @export var goToScene = "tower'sRoom1"
-var doorOpen = false
-@onready var door = $door
+@export var door : AnimatedSprite2D
 signal sceneChanged(sceneName)
-
-
+var doorOpen = false
 
 
 		 #FUNCTION#
 func _process(delta):
-	if Input.is_action_just_pressed("interact"):
-		if doorOpen:
-			emit_signal('sceneChanged', goToScene)
-		elif doorOpen == false:
-			door.frame = 2
-			doorOpen = true
-		else:
-			print('error at door')
+	if door.frame_changed:
+		doorOpen = true
+	
+	if Input.is_action_just_pressed("interact") and doorOpen:
+		emit_signal('sceneChanged', goToScene)
+
+
+
+
+
+
 
 func clean_up():
 	queue_free()

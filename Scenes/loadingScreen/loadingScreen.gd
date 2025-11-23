@@ -12,6 +12,7 @@ func _ready():
 signal sceneChanged(sceneName)
 @onready var buttonSound1 = $play_button/button1Sound
 @onready var animationPlayer = $AnimationPlayer
+@onready var playButton = $play_button
 
 
 
@@ -27,6 +28,7 @@ func checkFirstTime():
 		print("loadingScreen.gd checkFirstTime error")
 	
 func _on_play_button_pressed():
+	playButton.disabled = true
 	checkFirstTime()
 	buttonSound1.play()
 	animationPlayer.play("fade_out")

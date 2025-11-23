@@ -132,6 +132,7 @@ sprite_frames = SubResource("SpriteFrames_x3u5g")
 
 [node name="Hero" parent="." instance=ExtResource("6_onp1s")]
 position = Vector2(90, 304)
+ATKCD = 0.3
 
 [node name="Label" type="Label" parent="."]
 offset_left = 229.0

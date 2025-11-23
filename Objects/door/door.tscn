@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://br6eglxlslh6x"]
+
+[ext_resource type="Texture2D" uid="uid://bsefm3pmhuw6o" path="res://Game/Scenes/tower'sRoom1/door inside tower.png" id="1_7a1mr"]
+[ext_resource type="Script" uid="uid://b4gbtmgus03ll" path="res://Game/Objects/door/door.gd" id="2_be8v4"]
+[ext_resource type="PackedScene" uid="uid://d17uchubab6wh" path="res://Components/scenes/HealthComponent.tscn" id="2_n0bay"]
+[ext_resource type="PackedScene" uid="uid://ddila5mr2jid6" path="res://Components/scenes/HurtBoxComponent.tscn" id="3_61xt4"]
+[ext_resource type="AudioStream" uid="uid://cg8qox2sb3mhd" path="res://Game/Scenes/tower'sPracticeRoom/doorBreaksSoundEffect.mp3" id="4_b5omn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjid2"]
+atlas = ExtResource("1_7a1mr")
+region = Rect2(0, 0, 42, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmxeg"]
+atlas = ExtResource("1_7a1mr")
+region = Rect2(43, 0, 42, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22e8p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjid2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmxeg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyogh"]
+size = Vector2(10, 54)
+
+[node name="door" type="AnimatedSprite2D" groups=["mob"]]
+sprite_frames = SubResource("SpriteFrames_22e8p")
+script = ExtResource("2_be8v4")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("progress_bar") instance=ExtResource("2_n0bay")]
+MAX_HEALTH = 1.0
+progress_bar = NodePath("../ProgressBar")
+door = true
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_61xt4")]
+collision_layer = 4
+collision_mask = 16
+monitorable = false
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vyogh")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -44.0
+offset_top = -61.0
+offset_right = 42.0
+offset_bottom = -34.0
+
+[node name="doorBreakSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b5omn")
+volume_db = -16.533
+
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]

@@ -52,7 +52,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="slime" type="CharacterBody2D"]
+[node name="slime" type="CharacterBody2D" groups=["mob"]]
 scale = Vector2(0.3, 0.3)
 collision_layer = 0
 script = ExtResource("1_smrka")
@@ -74,17 +74,15 @@ collision_mask = 0
 BASE_ATTACK = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
-position = Vector2(-162.30931, 0)
+position = Vector2(-158.97614, 0)
 shape = SubResource("RectangleShape2D_xjlye")
+debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackComponent"]
-position = Vector2(163.33333, 0)
-shape = SubResource("RectangleShape2D_xjlye")
-
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["mob"] instance=ExtResource("3_o4in7")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_o4in7")]
 collision_layer = 4
 collision_mask = 16
-health_component = NodePath("../HealthComponent")
+monitorable = false
+healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
 position = Vector2(1.5, -0.5)
@@ -92,6 +90,7 @@ shape = SubResource("RectangleShape2D_wdk0w")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("progress_bar") instance=ExtResource("5_rwl7a")]
 progress_bar = NodePath("../ProgressBar")
+deleteAfterDie = true
 
 [node name="Slime" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6sf81")

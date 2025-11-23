@@ -1,12 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://tf7hmr1keu85"]
+[gd_scene load_steps=31 format=3 uid="uid://tf7hmr1keu85"]
 
 [ext_resource type="Script" uid="uid://24utlwak13vt" path="res://Game/Character/hero/hero.gd" id="1_y7j7r"]
 [ext_resource type="PackedScene" uid="uid://d17uchubab6wh" path="res://Components/scenes/HealthComponent.tscn" id="3_xrdsy"]
+[ext_resource type="Texture2D" uid="uid://1waqbtcinetr" path="res://Game/Character/hero/animation/HIT ANIMATION.png" id="4_1p01g"]
 [ext_resource type="PackedScene" uid="uid://ddila5mr2jid6" path="res://Components/scenes/HurtBoxComponent.tscn" id="4_lguug"]
 [ext_resource type="Texture2D" uid="uid://bg0y8vhhxrq4" path="res://Game/Character/hero/animation/IDLE ANIMATION.png" id="4_pyvpm"]
+[ext_resource type="Texture2D" uid="uid://3d37htcjavew" path="res://Game/Character/hero/animation/HERO DIE.png" id="5_8xo64"]
 [ext_resource type="Texture2D" uid="uid://d2pfnvipdb7te" path="res://Game/Character/hero/animation/JUMP ANIAMTION.png" id="5_yspxq"]
 [ext_resource type="Texture2D" uid="uid://b8bn88dkdhahf" path="res://Game/Character/hero/animation/WALK ANIMATION.png" id="6_y65ek"]
 [ext_resource type="Script" uid="uid://2py5sud0wvq6" path="res://Components/scripts/AttackComponent.gd" id="7_yspxq"]
+[ext_resource type="AudioStream" uid="uid://6vvdmala88hv" path="res://Game/Character/hero/swordHitSound.mp3" id="10_8xo64"]
+[ext_resource type="AudioStream" uid="uid://bq5juuo761j1c" path="res://Game/Character/hero/jumpSoundHero.mp3" id="10_wkjq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyvpm"]
 size = Vector2(28, 29)
@@ -14,6 +18,46 @@ size = Vector2(28, 29)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yspxq"]
 radius = 5.0
 height = 22.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gos8w"]
+atlas = ExtResource("4_1p01g")
+region = Rect2(0, 0, 43, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecnvx"]
+atlas = ExtResource("4_1p01g")
+region = Rect2(73, 0, 43, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3vuo"]
+atlas = ExtResource("4_1p01g")
+region = Rect2(143, 0, 43, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do7kk"]
+atlas = ExtResource("4_1p01g")
+region = Rect2(202, 0, 34, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy8gu"]
+atlas = ExtResource("4_1p01g")
+region = Rect2(274, 0, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1wxl"]
+atlas = ExtResource("4_1p01g")
+region = Rect2(340, 0, 55, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqs1y"]
+atlas = ExtResource("5_8xo64")
+region = Rect2(0, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e1tx"]
+atlas = ExtResource("5_8xo64")
+region = Rect2(48, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qelel"]
+atlas = ExtResource("5_8xo64")
+region = Rect2(96, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb52n"]
+atlas = ExtResource("5_8xo64")
+region = Rect2(144, 0, 48, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yspxq"]
 atlas = ExtResource("4_pyvpm")
@@ -37,20 +81,45 @@ region = Rect2(45, 0, 43, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1p01g"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_gos8w")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_ecnvx")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_t3vuo")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_do7kk")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_yy8gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1wxl")
+}],
+"loop": false,
 "name": &"ATTACK",
-"speed": 5.0
+"speed": 6.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqs1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e1tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qelel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb52n")
+}],
+"loop": false,
 "name": &"DEAD",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"FALL",
-"speed": 5.0
+"speed": 1.2
 }, {
 "frames": [{
 "duration": 1.0,
@@ -83,52 +152,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_y65ek"]
-resource_name = "new_animation"
-
-[sub_resource type="Animation" id="Animation_yspxq"]
-resource_name = "ATTACK"
-length = 0.6
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ModleOgKnight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_1p01g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ModleOgKnight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1p01g"]
-_data = {
-&"ATTACK": SubResource("Animation_yspxq"),
-&"RESET": SubResource("Animation_1p01g"),
-&"new_animation": SubResource("Animation_y65ek")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo64"]
 size = Vector2(75.5, 20)
 
-[node name="Hero" type="CharacterBody2D"]
+[node name="Hero" type="CharacterBody2D" groups=["hero"]]
 collision_layer = 64
 script = ExtResource("1_y7j7r")
 
@@ -136,10 +163,10 @@ script = ExtResource("1_y7j7r")
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_pyvpm")
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Hero"] instance=ExtResource("4_lguug")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_lguug")]
 collision_layer = 2
 collision_mask = 32
-health_component = NodePath("../HealthComponent")
+healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
 position = Vector2(-2, 10)
@@ -150,7 +177,7 @@ progress_bar = NodePath("../ProgressBar")
 
 [node name="ModleOgKnight" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1p01g")
-animation = &"ATTACK"
+animation = &"IDLE"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -21.000002
@@ -159,12 +186,9 @@ offset_right = 84.0
 offset_bottom = -6.0
 scale = Vector2(0.4025357, 0.4025357)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1p01g")
-}
-
 [node name="AttackComponent" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("7_yspxq")
@@ -174,3 +198,10 @@ metadata/_custom_type_script = "uid://2py5sud0wvq6"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
 position = Vector2(55.25, 5)
 shape = SubResource("RectangleShape2D_8xo64")
+debug_color = Color(0.6214429, 0.52642566, 0.25948438, 0.41960785)
+
+[node name="jumpSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_wkjq6")
+
+[node name="swordHitSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8xo64")
